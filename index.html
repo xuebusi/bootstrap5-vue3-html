@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司网站</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">公司名称</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cases.html">客户案例</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="solutions.html">解决方案</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="teams.html">团队展示</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">关于我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container mt-4">
+            <!-- 轮播图 -->
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" v-for="(url, index) in carouselImages" :class="{ active: index === 0 }" :key="index">
+                        <div class="d-block w-100" :style="{ backgroundImage: `url(${url})`, height: '300px', backgroundSize: 'cover', backgroundPosition: 'center' }"></div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- 服务介绍 -->
+            <section id="services" class="mt-5">
+                <h2 class="text-center">我们的服务</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">服务1</h5>
+                                <p class="card-text">我们提供高质量的服务1，帮助客户实现目标。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">服务2</h5>
+                                <p class="card-text">我们的服务2专注于创新和客户满意度。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">服务3</h5>
+                                <p class="card-text">服务3致力于提供最佳解决方案。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 客户案例 -->
+            <section id="cases" class="mt-5">
+                <h2 class="text-center">客户案例</h2>
+                <div class="row">
+                    <div class="col-md-4" v-for="(url, index) in caseImages" :key="index">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body" :style="{ backgroundImage: `url(${url})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '150px' }">
+                                <p class="card-text">案例{{ index + 1 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 解决方案 -->
+            <section id="solutions" class="mt-5">
+                <h2 class="text-center">解决方案</h2>
+                <div class="row">
+                    <div class="col-md-4" v-for="(url, index) in solutionImages" :key="index">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body" :style="{ backgroundImage: `url(${url})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '150px' }">
+                                <p class="card-text">方案{{ index + 1 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 团队展示 -->
+            <section id="teams" class="mt-5">
+                <h2 class="text-center">团队展示</h2>
+                <div class="row">
+                    <div class="col-md-4" v-for="(url, index) in teamImages" :key="index">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body" :style="{ backgroundImage: `url(${url})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '150px' }">
+                                <p class="card-text">成员{{ index + 1 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 客户评价 -->
+            <section id="testimonials" class="mt-5">
+                <h2 class="text-center">客户评价</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">“这家公司提供了卓越的服务，超出了我们的期望。”</p>
+                            <footer class="blockquote-footer">客户A</footer>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-5">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">“他们的解决方案帮助我们实现了业务目标。”</p>
+                            <footer class="blockquote-footer">客户B</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            <p>版权所有 &copy; 2023 公司名称</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
